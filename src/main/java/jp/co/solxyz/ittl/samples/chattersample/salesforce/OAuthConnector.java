@@ -27,6 +27,13 @@ public class OAuthConnector {
 	private static final String secretKey = "<Input your Secret Key>";
 	protected static final String callbackUrl = "<Input your callback url>";
 
+	/**
+	 * ログインを実施します。
+	 * @param userid ログインID 例:admin@domain.com
+	 * @param password パスワード
+	 * @param securityToken セキュリティトークン
+	 * @return
+	 */
 	public OAuthResult login(String userid, String password,
 			String securityToken) {
 
