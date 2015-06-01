@@ -10,6 +10,7 @@ import java.net.URL;
 
 import com.google.gson.Gson;
 
+import jp.co.solxyz.ittl.samples.chattersample.salesforce.model.ChatterPosting;
 import jp.co.solxyz.ittl.samples.chattersample.salesforce.model.OAuthResult;
 
 public class OAuthConnector {
@@ -77,5 +78,74 @@ public class OAuthConnector {
 
 		return result;
 	}
+	
+	public void postToChatter(OAuthResult credential, String message){
+		ChatterPosting post = new ChatterPosting(message);
+		
+	}
 
+	/**
+	 * POST送信を行う
+	 * @param path path
+	 * @param body 本文
+	 * @param credential 認証情報
+	 */
+	public String sendWithPost(String path, String body, OAuthResult credential){
+		
+		HttpURLConnection connection = null;
+		BufferedReader br = null;
+	
+		String result = null;;
+			
+		try {
+			URL url = new URL(credential.getInstance_url() + path);
+			
+			connection = (HttpURLConnection) url.openConnection();
+
+			connection.setRequestMethod("POST");
+			connection.setDoInput(true);
+			connection.setDoOutput(true);
+
+			String postMessage = body;
+			
+			PrintStream ps = new PrintStream(connection.getOutputStream());
+			ps.print(postMessage);
+			ps.close();
+
+			// レスポンスを受信する
+			int iResponseCode = connection.getResponseCode();
+
+			// 接続が確立したとき
+			if (iResponseCode == HttpURLConnection.HTTP_OK) {
+				// StringBuilder resultBuilder = new StringBuilder();
+				// String line = "";
+
+				br = new BufferedReader(new InputStreamReader(
+						connection.getInputStream()));
+				
+				StringBuilder builder = new StringBuilder();
+				
+				String _line = null;
+				
+				while((_line = br.readLine()) != null){
+					builder.append(_line+"\r\n");
+				}
+				
+				result = builder.toString();
+
+			}
+			// 接続が確立できなかったとき
+			else {
+				result = null;
+			}
+
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 }

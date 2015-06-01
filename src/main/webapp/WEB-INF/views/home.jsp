@@ -10,5 +10,9 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+<br/><br/>
+<p>RESPONSE OF CHATTER POSTING</p>
+<p>${postResult}</p>
 </body>
 </html>
