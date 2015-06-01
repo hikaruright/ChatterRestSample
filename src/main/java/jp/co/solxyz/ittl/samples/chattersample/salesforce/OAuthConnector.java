@@ -145,20 +145,9 @@ public class OAuthConnector {
 			// 接続が確立できなかったとき
 			else {
 				logger.info("======== HTTP STATUS is "+iResponseCode);
+				logger.info("======== HTTP RESPONSE is "+connection.getResponseMessage());
 				
-				br = new BufferedReader(new InputStreamReader(
-						connection.getInputStream()));
-				
-				StringBuilder builder = new StringBuilder();
-				
-				String _line = null;
-				
-				while((_line = br.readLine()) != null){
-					builder.append(_line+"\r\n");
-				}
-				result = builder.toString();
-				
-				//result = null;
+				result = null;
 			}
 
 		} catch (MalformedURLException e) {
