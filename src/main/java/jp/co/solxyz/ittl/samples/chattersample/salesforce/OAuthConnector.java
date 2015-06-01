@@ -13,8 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 
-import jp.co.solxyz.ittl.samples.chattersample.HomeController;
-import jp.co.solxyz.ittl.samples.chattersample.salesforce.model.ChatterPosting;
 import jp.co.solxyz.ittl.samples.chattersample.salesforce.model.OAuthResult;
 
 public class OAuthConnector {
@@ -85,13 +83,8 @@ public class OAuthConnector {
 		return result;
 	}
 	
-	public void postToChatter(OAuthResult credential, String message){
-		ChatterPosting post = new ChatterPosting(message);
-		
-	}
-
 	/**
-	 * POST送信を行う
+	 * POST送信を行う。サンプルのためjsonレスポンスをそのまま返します。
 	 * @param path path
 	 * @param body 本文
 	 * @param credential 認証情報
@@ -114,6 +107,8 @@ public class OAuthConnector {
 
 			// OAuth credentials
 			connection.setRequestProperty("Authorization", "OAuth "+credential.getAccess_token());
+			connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+			connection.setRequestProperty("Accept", "application/json");
 
 			String postMessage = body;
 			

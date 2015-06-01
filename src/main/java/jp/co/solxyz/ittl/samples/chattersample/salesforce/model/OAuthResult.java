@@ -5,6 +5,11 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * OAuth情報を格納
+ * @author Hikaru Sato
+ *
+ */
 @Data
 @AllArgsConstructor
 @ToString

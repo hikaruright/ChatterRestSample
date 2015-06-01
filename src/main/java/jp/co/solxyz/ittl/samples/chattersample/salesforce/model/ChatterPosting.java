@@ -9,6 +9,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Chatter送信を行うためのBean
+ * @author Hikaru Sato
+ *
+ */
 @Data
 public class ChatterPosting {
 
