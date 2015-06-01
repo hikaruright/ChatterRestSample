@@ -8,12 +8,18 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 
+import jp.co.solxyz.ittl.samples.chattersample.HomeController;
 import jp.co.solxyz.ittl.samples.chattersample.salesforce.model.ChatterPosting;
 import jp.co.solxyz.ittl.samples.chattersample.salesforce.model.OAuthResult;
 
 public class OAuthConnector {
+	
+	private static final Logger logger = LoggerFactory.getLogger(OAuthConnector.class);
 
 	private String loginEndpoint = "https://login.salesforce.com/services/oauth2/token";
 
@@ -67,6 +73,8 @@ public class OAuthConnector {
 			}
 			// 接続が確立できなかったとき
 			else {
+				logger.info("======== HTTP STATUS is "+iResponseCode);
+				
 				result = null;
 			}
 
