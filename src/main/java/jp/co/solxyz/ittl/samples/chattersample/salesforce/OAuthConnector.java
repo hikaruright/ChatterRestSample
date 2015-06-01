@@ -23,9 +23,9 @@ public class OAuthConnector {
 
 	private static final String postFormat = "grant_type=password&client_id=%s&client_secret=%s&username=%s&password=%s%s";
 
-	private static final String consumerKey = "3MVG9ZL0ppGP5UrAPxRqNrjRd6qHaHVXa4X4BZkfPOkWHdA.Nu24rByD9VQCD4FHOBl6CvVlt1vGozn17el.b";
-	private static final String secretKey = "7032920670240309058";
-	protected static final String callbackUrl = "quester://oauth/done";
+	private static final String consumerKey = "<Input your Consumer Key>";
+	private static final String secretKey = "<Input your Secret Key>";
+	protected static final String callbackUrl = "<Input your callback url>";
 
 	public OAuthResult login(String userid, String password,
 			String securityToken) {
