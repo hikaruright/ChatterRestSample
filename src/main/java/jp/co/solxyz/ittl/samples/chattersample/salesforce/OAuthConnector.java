@@ -114,6 +114,9 @@ public class OAuthConnector {
 			connection.setDoInput(true);
 			connection.setDoOutput(true);
 
+			// OAuth credentials
+			connection.setRequestProperty("Authorization", "OAuth "+credential.getAccess_token());
+
 			String postMessage = body;
 			
 			PrintStream ps = new PrintStream(connection.getOutputStream());
